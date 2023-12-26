@@ -1,16 +1,5 @@
-local export = nil
-local rpemotes = GetResourceState("rpemotes")
-local scully = GetResourceState("scully_emotemenu")
-
-if rpemotes == "missing" and scully == "missing" then return end
-
-CreateThread(function()
-    if rpemotes == "started" then
-        export = exports["rpemotes"]
-    elseif scully == "started" then
-        export = exports["scully_emotemenu"]
-    end
-end)
+if GetResourceState('rpemotes') == 'missing' and GetResourceState('scully_emotemenu') == 'missing' then return end
+local export = GetResourceState('rpemotes') == 'started' and exports['rpemotes'] or exports['scully_emotemenu']
 
 local function CheckType(ped, type)
     local drawable = GetPedDrawableVariation(ped, config["Drawable Variations"])
