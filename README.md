@@ -8,21 +8,21 @@
 
 Improved radio anims with support for rp-emotes and scully emotes
 
-## Installation
+## Installation / Prerequisites 
 
-Add ``setr voice_enableRadioAnim 0`` to your server.cfg 
+- Remove any resource that already has emotes/anims built-in (i.e. rp-radio)
 
-**This WILL NOT work if you are using rp-radio**
+1. Download the release of [ox_lib](https://github.com/CommunityOx/ox_lib/releases/), and add it to your ``server.cfg`` **BEFORE** `TAM_BetterRadioAnims`
 
-Download the release of [ox_lib](https://github.com/overextended/ox_lib) from  & add it to your server.cfg or resources.cfg **BEFORE** `TAM_BetterRadioAnims`
+2. Add ``setr voice_enableRadioAnim 0`` to your ``server.cfg``
 
-Add `ensure TAM_BetterRadioAnims` to your server or resources cfg file
+3. Add ``ensure TAM_BetterRadioAnims`` to your ``server.cfg``
 
-Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to stream folder
+4. Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to any stream folder
 
 ### If using scully_emotemenu:
 
-**Add to scully_emotemenu/custom_emotes.lua:** ``Emotes = {}``
+- **Add to** ``scully_emotemenu/shared/data/emotes/general_emotes.lua``:
 ```lua
     {
         Label = 'Radio 2',
@@ -62,13 +62,11 @@ Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to
     },
 ```
 
-### If using rpemotes:
+### If using rpemotes-reborn:
 
-**Add to rpemotes/client/AnimationListCustom.lua:**
+- Change `config.defaultEmote` to `wt3` or `wt4`
 
-**Change `config.defaultEmote` to `wt3` or `wt4`**
-
-``CustomDP.Emotes = {}``
+- **Add to** ``rpemotes/client/AnimationListCustom.lua`` -> ``CustomDP.Emotes = {}``:
 ```lua
     ["radio2"] = {
         "random@arrests",
