@@ -6,11 +6,27 @@
 
 [Tebex](https://threeamigos.shop)
 
-Improved radio anims with support for rp-emotes and scully emotes
+Improved radio animations w/ support for multiple animation menus.
+
+## Features
+
+- Support for any ped model
+- Clothing support
+- Support for multiple animations
+- Keybind and Event support
+- Ped and Vehicle Class blacklist support
+
+## Supports
+
+- [scully_emotemenu](https://github.com/Scullyy/scully_emotemenu)
+- [rpemotes-reborn](https://github.com/alberttheprince/rpemotes-reborn)
+- [Sonoran Radio](https://sonoranradio.com/)
 
 ## Installation / Prerequisites 
 
 - Remove any resource that already has emotes/anims built-in (i.e. rp-radio)
+
+- Ensure you have either [scully_emotemenu](https://github.com/Scullyy/scully_emotemenu) or [rpemotes-reborn](https://github.com/alberttheprince/rpemotes-reborn) installed, and is started **BEFORE** `TAM_BetterRadioAnims`
 
 1. Download the release of [ox_lib](https://github.com/CommunityOx/ox_lib/releases/), and add it to your ``server.cfg`` **BEFORE** `TAM_BetterRadioAnims`
 
@@ -64,7 +80,7 @@ Improved radio anims with support for rp-emotes and scully emotes
 
 ### If using rpemotes-reborn:
 
-- Change `config.defaultEmote` to `wt3` or `wt4`
+- Change `config.animations["default"]` to `wt3` or `wt4`
 
 - **Add to** ``rpemotes/client/AnimationListCustom.lua`` -> ``CustomDP.Emotes = {}``:
 ```lua

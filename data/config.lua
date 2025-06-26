@@ -2,11 +2,11 @@
 ---- For Support - discord.gg/threeamigos ----
 --]]------------------------------------------
 
-config = {}
+local config = {}
 
-config.debug = true -- enable or disable debug prints to your client console. Also enables the ability to use commands to get drawable types & textures.
+config.debug = false
 
-config.defaultEmote = "wt2" -- default emote that plays if you dont have the clothing option (Use wt3 or wt4 if using RPEmotes)
+config.useEvent = true -- whether or not to tie into the PMA voice event handler.
 
 config.useKeybind = false -- whether or not to enable/disable the use of keybinds instead of the PMA voice event handler
 
@@ -14,73 +14,75 @@ config.keybindKey = "LMENU" -- key to set for keyboard keybind. See https://docs
 
 config.controllerKey = "R1_INDEX" -- Button to set for controller keybind. Set to nil to disable. See https://docs.fivem.net/docs/game-references/input-mapper-parameter-ids/pad_digitalbutton/
 
-config.useEvent = true -- whether or not to tie into the PMA voice event handler.
-
-config.chestAnim = { -- Chest Animation
-    enable = true, -- enable the chest radio animation
-    drawable = 9, -- the drawable (clothing type) for the chest radio animation
-    male = {
-       variations = { -- the clothing variations for the chest radio animation for male
-            1
-       },
-       textures = { -- the texture id's of the drawable for male clothing. 
-            0
-       }
-    },
-    female = {
-        variations = { -- the clothing variations for the chest radio animation for female
-            1
-        },
-        textures = { -- the texture id's of the drawable for female clothing.
-            0
-        }
-    },
-    emote = "radiochest" -- Emote to play
+config.animations = {
+    default = "wt2",
+    shoulder = "radio",
+    shoulder_aiming = "radio2", -- the animation is used for when the player is aiming (if you have any other aiming animations you want to add put the name of your animation and add _aiming to the end of it)
+    chest = "radiochest",
+    earpiece = "earpiece"
 }
 
-config.shoulderAnim = { -- Shoulder Animation
-    enable = true, -- enable the shoulder radio animation
-    drawable = 9, -- the drawable (clothing type) for the shoulder radio animation
-    male = {
-        variations = { -- the clothing variations for the chest radio animation for male
-            2
+--[[
+    List of drawable variations, though we recommend to keep them on either accessory, undershirt or torso.
+    0: Face 
+    1: Mask 
+    2: Hair 
+    3: Torso 
+    4: Leg 
+    5: Parachute / bag 
+    6: Shoes 
+    7: Accessory 
+    8: Undershirt 
+    9: Kevlar 
+    10: Badge 
+    11: Torso 2
+]]
+
+config.clothing = {
+    [`mp_m_freemode_01`] = {
+        [9] = { -- drawable
+            [20] = { -- component
+                [0] = "shoulder", -- texture/variation & animation
+                [1] = "chest",
+                [2] = "earpiece"
+            }
         },
-        textures = { -- the texture id's of the drawable for male clothing. 
-            0
-        }
-     },
-     female = {
-        variations = { -- the clothing variations for the chest radio animation for female
-            2
+    },
+    [`mp_f_freemode_01`] = {
+        [9] = { -- drawable
+            [20] = { -- component
+                [0] = "shoulder", -- texture/variation & animation
+                [1] = "chest",
+                [2] = "earpiece"
+            }
         },
-        textures = { -- the texture id's of the drawable for female clothing.
-            0
-        }
-     },
-    emote = "radio", -- emote to play
-    emoteAiming = "radio2" -- Emote to play when aiming
+    }
 }
 
-config.earpieceAnim = { -- Ear Piece Animation
-    enable = true, -- enable the ear piece radio animation
-    drawable = 9, -- the drawable (clothing type) for the ear piece
-    male = {
-        variations = { -- the clothing variations for the chest radio animation for male
-            3
+--[[
+    List of prop variations
+    0: Hats 
+    1: Glasses 
+    2: Ears 
+    6: Watches 
+    7: Braclets 
+]]
+
+config.props = {
+    [`mp_m_freemode_01`] = {
+        [2] = { -- drawable
+            [0] = { -- component
+                [0] = "earpiece", -- texture/variation & animation
+            }
         },
-        textures = { -- the texture id's of the drawable for male clothing. 
-            0
-        }
-     },
-     female = {
-        variations = { -- the clothing variations for the chest radio animation for female
-            3
+    },
+    [`mp_f_freemode_01`] = {
+        [2] = { -- drawable
+            [0] = { -- component
+                [0] = "earpiece", -- texture/variation & animation
+            }
         },
-        textures = { -- the texture id's of the drawable for female clothing.
-            0
-        }
-     },
-    emote = "earpiece" -- Emote to play
+    }
 }
 
 config.blacklistedPeds = { -- blacklist peds from using the anims - list of peds: https://forge.plebmasters.de/peds
@@ -133,22 +135,5 @@ config.blacklistedClasses = { -- vehicle classes to blacklist
     15,
     16
 }
-
-
---[[
-    List of drawable variations, though we recommend to keep them on either accessory, undershirt or torso.
-    0: Face 
-    1: Mask 
-    2: Hair 
-    3: Torso 
-    4: Leg 
-    5: Parachute / bag 
-    6: Shoes 
-    7: Accessory 
-    8: Undershirt 
-    9: Kevlar 
-    10: Badge 
-    11: Torso 2
-]]
 
 return config
