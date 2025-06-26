@@ -1,0 +1,28 @@
+{
+    "keybind": "Radio Animation Key",
+
+    "commands": {
+        "toggleprops": {
+            "label": "toggleprops",
+            "suggestion": "Toggle wether to use props or clothing in radio animations.",
+            "params": {
+                "bool": {
+                    "label": "bool",
+                    "help": "true/false"
+                }
+            }
+        },
+
+        "getclothing": {
+            "label": "getclothing"
+        }
+    },
+
+    "notifications": {
+        "title": "Better Radio Animations",
+        "messages": {
+            "toggled": "Props toggled: %s",
+            "copied": "Current clothing copied to clipboard."
+        }
+    }
+}

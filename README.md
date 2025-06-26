@@ -6,23 +6,39 @@
 
 [Tebex](https://threeamigos.shop)
 
-Improved radio anims with support for rp-emotes and scully emotes
+Improved radio animations w/ support for multiple animation menus.
 
-## Installation
+## Features
 
-Add ``setr voice_enableRadioAnim 0`` to your server.cfg 
+- Support for any ped model
+- Clothing support
+- Support for multiple animations
+- Keybind and Event support
+- Ped and Vehicle Class blacklist support
 
-**This WILL NOT work if you are using rp-radio**
+## Supports
 
-Download the release of [ox_lib](https://github.com/overextended/ox_lib) from  & add it to your server.cfg or resources.cfg **BEFORE** `TAM_BetterRadioAnims`
+- [scully_emotemenu](https://github.com/Scullyy/scully_emotemenu)
+- [rpemotes-reborn](https://github.com/alberttheprince/rpemotes-reborn)
+- [Sonoran Radio](https://sonoranradio.com/)
 
-Add `ensure TAM_BetterRadioAnims` to your server or resources cfg file
+## Installation / Prerequisites 
 
-Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to stream folder
+- Remove any resource that already has emotes/anims built-in (i.e. rp-radio)
+
+- Ensure you have either [scully_emotemenu](https://github.com/Scullyy/scully_emotemenu) or [rpemotes-reborn](https://github.com/alberttheprince/rpemotes-reborn) installed, and is started **BEFORE** `TAM_BetterRadioAnims`
+
+1. Download the release of [ox_lib](https://github.com/CommunityOx/ox_lib/releases/), and add it to your ``server.cfg`` **BEFORE** `TAM_BetterRadioAnims`
+
+2. Add ``setr voice_enableRadioAnim 0`` to your ``server.cfg``
+
+3. Add ``ensure TAM_BetterRadioAnims`` to your ``server.cfg``
+
+4. Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to any stream folder
 
 ### If using scully_emotemenu:
 
-**Add to scully_emotemenu/custom_emotes.lua:** ``Emotes = {}``
+- **Add to** ``scully_emotemenu/shared/data/emotes/general_emotes.lua``:
 ```lua
     {
         Label = 'Radio 2',
@@ -62,13 +78,11 @@ Download [animations](https://www.gta5-mods.com/misc/leo-custom-anim) and add to
     },
 ```
 
-### If using rpemotes:
+### If using rpemotes-reborn:
 
-**Add to rpemotes/client/AnimationListCustom.lua:**
+- Change `config.animations["default"]` to `wt3` or `wt4`
 
-**Change `config.defaultEmote` to `wt3` or `wt4`**
-
-``CustomDP.Emotes = {}``
+- **Add to** ``rpemotes/client/AnimationListCustom.lua`` -> ``CustomDP.Emotes = {}``:
 ```lua
     ["radio2"] = {
         "random@arrests",

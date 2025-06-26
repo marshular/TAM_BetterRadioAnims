@@ -19,26 +19,27 @@ client_debug_mode "false"
 server_debug_mode "false"
 experimental_features_enabled "0"
 
-files {
-	"data/**"
-}
-
-dependencies {
-	"ox_lib",
-}
-
 shared_scripts {
 	"@ox_lib/init.lua"
+}
+
+files {
+	"data/**",
+	"locales/**"
 }
 
 client_script "client/main.lua"
 
 server_script "server/main.lua"
 
+dependencies {
+	"ox_lib",
+}
 
 escrow_ignore {
 	"client/*.lua",
 	"stream/*",
 	"data/**",
+	"locales/**",
 	"server/*.lua"
 }
